@@ -40,6 +40,7 @@ else
 		./nvim.appimage --appimage-extract
 		./squashfs-root/AppRun --version
 		rm -r /squashfs-root
+		rm nvim.appimage
 		sudo mv squashfs-root /
 		rm /usr/bin/nvim
 		sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
@@ -59,7 +60,7 @@ else
 	fi
 
 	# Install nodejs and npm higher than 20 (thanks LTS Ubuntu)
-	sudo apt autoremove nodejs
+	sudo apt autoremove -y nodejs
 	curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 	sudo bash nodesource_setup.sh
 	rm nodesource_setup.sh

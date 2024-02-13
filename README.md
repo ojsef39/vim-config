@@ -7,20 +7,48 @@ neovim and dependencies needed for my config.
 Requrements:
 
 - apt or brew
-- MacOS (Tested on ARM)
-- Linux (Only x86_64 for now)
+- MacOS (Tested on ARM, should work on x86 too)
+- Linux (Tested on x86 & ARM)
 
 Dependencies (if needed, will be installed by script):
 
-- curl
-- golang
-- python3
-- libfuse2
-- neovim
-- ripgrep
-- unzip
-- nodejs 20.x
-- npm 9.6.4
+- MacOS:
+
+  - neovim
+  - npm
+  - ripgrep
+  - fastetch (optional)
+
+- Linux:
+
+  - x86_64:
+
+    - neovim (Latest AppImage)
+
+  - ARM:
+
+    - neovim (Latest Cmake build)
+    - ninja-build
+    - gettext
+    - libtool
+    - libtool-bin
+    - autoconf
+    - automake
+    - cmake
+    - g++
+    - pkg-config
+    - doxygen
+    - make
+
+  - All:
+    - NodeJS (20.x)
+    - npm (9.6.4)
+    - ripgrep
+    - curl
+    - libfuse2
+    - python3 (for language server)
+    - golang (for language server)
+    - unzip
 
 ## How to install
 
