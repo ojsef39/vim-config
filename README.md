@@ -8,7 +8,7 @@ Requrements:
 
 - apt or brew
 - MacOS (Tested on ARM, should work on x86 too)
-- Linux (Tested on x86 & ARM)
+- Linux (Tested on x86 & ARM - Note: ARM version could be buggy)
 
 Dependencies (if needed, will be installed by script):
 

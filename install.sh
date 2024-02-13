@@ -11,6 +11,11 @@ else
 fi
 
 if [ "$IS_MAC" = true ]; then
+	# CHeck if brew is installed
+	if ! command -v brew >/dev/null; then
+		echo "Homebrew is not installed, please install it first (https://brew.sh/)"
+		exit 1
+	fi
 	brew install neovim npm ripgrep
 	# Install neovim and npm (npm is needed for language servers)
 	# Check if user is using zrsh or bash
