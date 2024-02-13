@@ -15,43 +15,50 @@ See below how to install and update.
 
 ## Dependencies (if needed, will be installed by script)
 
-- MacOS:
+<details open><summary>MacOS:</summary>
 
-  - neovim
-  - npm
-  - ripgrep
-  - fastetch (optional)
+- neovim
+- npm
+- ripgrep
+- fastetch (optional)
+</details>
 
-- Linux:
+<details open><summary>Linux:</summary>
 
-  - x86_64:
+<details open><summary>x86_64:</summary>
 
-    - neovim (Latest AppImage)
+- neovim (Latest AppImage)
+</details>
 
-  - ARM:
+<details><summary>ARM:</summary>
 
-    - neovim (Latest Cmake build)
-    - ninja-build
-    - gettext
-    - libtool
-    - libtool-bin
-    - autoconf
-    - automake
-    - cmake
-    - g++
-    - pkg-config
-    - doxygen
-    - make
+- neovim (Latest Cmake build)
+- ninja-build
+- gettext
+- libtool
+- libtool-bin
+- autoconf
+- automake
+- cmake
+- g++
+- pkg-config
+- doxygen
+- make
 
-  - All:
-    - NodeJS (20.x)
-    - npm (9.6.4)
-    - ripgrep
-    - curl
-    - libfuse2
-    - python3 (for language server)
-    - golang (for language server)
-    - unzip
+</details>
+
+<details open><summary>All linux versions:</summary>
+
+- NodeJS (20.x)
+- npm (9.6.4)
+- ripgrep
+- curl
+- libfuse2
+- python3 (for language server)
+- golang (for language server)
+- unzip
+</details>
+</details>
 
 ## How to install
 
