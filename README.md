@@ -17,7 +17,7 @@ See below how to install and update.
 
 <details open><summary>MacOS:</summary>
 
-- neovim
+- neovim (latest from brew)
 - npm
 - ripgrep
 - fastetch (optional)
