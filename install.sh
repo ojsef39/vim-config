@@ -44,7 +44,7 @@ else
 		sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 	else
 		if pgrep -x "apt" >/dev/null; then
-			sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config doxygen
+			sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config doxygen make
 		else
 			echo "Sorry, this script only supports apt for now"
 			git clone https://github.com/neovim/neovim.git
