@@ -33,26 +33,27 @@ else
 	fi
 
 	# Install neovim and npm (npm is needed for language servers)
-  if [ "$(uname -m)" == "x86_64" ]; then
-  	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	  chmod u+x nvim.appimage
-	  ./nvim.appimage --appimage-extract
-	  ./squashfs-root/AppRun --version
-	  rm -r /squashfs-root
-	  sudo mv squashfs-root /
-	  rm /usr/bin/nvim
-  	sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
-  else
-    if pgrep -x "apt" >/dev/null; then
-      sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config doxygen
-    else
-      echo "Sorry, this script only supports apt for now"
-      git clone https://github.com/neovim/neovim.git
-      cd neovim
-      make CMAKE_BUILD_TYPE=RelWithDebInfo
-      sudo make install
-      cd .. && rm -rf neovim
-  fi
+	if [ "$(uname -m)" == "x86_64" ]; then
+		curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+		chmod u+x nvim.appimage
+		./nvim.appimage --appimage-extract
+		./squashfs-root/AppRun --version
+		rm -r /squashfs-root
+		sudo mv squashfs-root /
+		rm /usr/bin/nvim
+		sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+	else
+		if pgrep -x "apt" >/dev/null; then
+			sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config doxygen
+		else
+			echo "Sorry, this script only supports apt for now"
+			git clone https://github.com/neovim/neovim.git
+			cd neovim
+			make CMAKE_BUILD_TYPE=RelWithDebInfo
+			sudo make install
+			cd .. && rm -rf neovim
+		fi
+	fi
 
 	# Install nodejs and npm higher than 20 (thanks LTS Ubuntu)
 	sudo apt autoremove nodejs
