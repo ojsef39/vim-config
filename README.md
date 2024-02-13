@@ -2,7 +2,7 @@
 
 You can steal this config if you want to.
 If youre on a new system run `install.sh` and it will install
-neovim and dependencies needed for my config.
+neovim and dependencies needed for my config. [How to install?](https://github.com/ojsef39/vim-config/tree/dev-1.0?tab=readme-ov-file#how-to-install)
 
 Requrements:
 
