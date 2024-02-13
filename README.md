@@ -4,7 +4,8 @@ Feel free to steal this config ;)
 
 If youre on a new system you can run `install.sh` and it will install
 neovim and dependencies needed for my config.
-Check [How to install?](https://github.com/ojsef39/vim-config/tree/dev-1.0?tab=readme-ov-file#how-to-install) and [How to update?](https://github.com/ojsef39/vim-config/tree/dev-1.0?tab=readme-ov-file#how-to-updatei).
+
+See below how to install and update.
 
 Requrements:
 
