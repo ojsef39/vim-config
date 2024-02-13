@@ -27,12 +27,12 @@ See below how to install and update.
 
 <details open><summary>x86_64:</summary>
 
-- neovim (Latest AppImage)
+- neovim (latest AppImage)
 </details>
 
 <details><summary>ARM:</summary>
 
-- neovim (Latest Cmake build)
+- neovim (latest Cmake build)
 - ninja-build
 - gettext
 - libtool
