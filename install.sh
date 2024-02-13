@@ -25,11 +25,12 @@ if [ "$IS_MAC" = true ]; then
 	fi
 else
 	# Check if using apt
-	if pgrep -x "apt" >/dev/null; then
+	if command -v apt >/dev/null || which apt >/dev/null; then
 		sudo apt update
 		sudo apt install -y curl libfuse2 ripgrep python3 golang unzip npm
 	else
 		echo "Sorry, this script only supports apt for now"
+		exit 1
 	fi
 
 	# Install neovim and npm (npm is needed for language servers)
@@ -43,16 +44,18 @@ else
 		rm /usr/bin/nvim
 		sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 	else
-		if pgrep -x "apt" >/dev/null; then
+		# Check if using apt
+		if command -v apt >/dev/null || which apt >/dev/null; then
 			sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config doxygen make
 		else
 			echo "Sorry, this script only supports apt for now"
-			git clone https://github.com/neovim/neovim.git
-			cd neovim
-			make CMAKE_BUILD_TYPE=RelWithDebInfo
-			sudo make install
-			cd .. && rm -rf neovim
+			exit 1
 		fi
+		git clone https://github.com/neovim/neovim.git
+		cd neovim
+		make CMAKE_BUILD_TYPE=RelWithDebInfo
+		sudo make install
+		cd .. && rm -rf neovim
 	fi
 
 	# Install nodejs and npm higher than 20 (thanks LTS Ubuntu)
