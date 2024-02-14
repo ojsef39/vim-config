@@ -63,8 +63,8 @@ See below how to install and update.
 ## How to install
 
 1. Clone the repo
-2. Run `install.sh`
+2. Run `sudo install.sh`
 
 ## How to update
 
-1. Run `update.sh`
+1. Run `sudo update.sh`
