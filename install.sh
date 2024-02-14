@@ -78,7 +78,7 @@ else
 
 	# Append to .bashrc, check before if the path is already there
 	if ! grep -q '/opt/nvim/' ~/.bashrc; then
-		echo 'export PATH="$PATH:/opt/nvim/' >>~/.bashrc
+		echo 'export PATH="$PATH:/opt/nvim/"' >>~/.bashrc
 	fi
 fi
 echo "Done installing, moving files now…"
