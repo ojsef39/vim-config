@@ -36,7 +36,7 @@ else
 	# Check if using apt
 	if command -v apt >/dev/null || which apt >/dev/null; then
 		sudo apt update
-		sudo apt install -y curl libfuse2 ripgrep python3 golang unzip npm
+		sudo apt install -y curl libfuse2 ripgrep python3 golang unzip
 	else
 		echo "Sorry, this script only supports apt for now"
 		exit 1
@@ -73,7 +73,7 @@ else
 	curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 	sudo bash nodesource_setup.sh
 	rm nodesource_setup.sh
-	sudo apt install -y nodejs
+	sudo apt install -y nodejs npm
 	npm install -g npm@9.6.4
 
 	# Append to .bashrc, check before if the path is already there
