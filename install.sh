@@ -4,6 +4,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	IS_MAC=true
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	IS_MAC=false
+	DISTRO=$(grep '^ID=' /etc/os-release | cut -d= -f2)
 	if [[ "$DISTRO" == "ubuntu" ]]; then
 		LINUX_DIST="ubuntu"
 	fi
