@@ -66,10 +66,22 @@ else
 			exit 1
 		fi
 		git clone https://github.com/neovim/neovim.git
-		cd neovim
-		make CMAKE_BUILD_TYPE=RelWithDebInfo
-		sudo make install
-		cd .. && rm -rf neovim
+		# Check if version is the same before installing
+		nvim_version=$(nvim -v | head -n 1 | awk '{print $2}')
+		nvim_version=${nvim_version#v} # Remove leading 'v' if present
+
+		# Extract version from git describe
+		git_version=$(git describe --first-parent --dirty --always)
+		git_version=${git_version%%-*} # Remove everything after (and including) the first '-'
+
+		if [ "$nvim_version" != "$git_version" ]; then
+			cd neovim
+			make CMAKE_BUILD_TYPE=RelWithDebInfo
+			sudo make install
+			cd .. && rm -rf neovim
+		else
+			echo "Neovim is already installed and up to date"
+		fi
 	fi
 
 	# Install nodejs and npm higher than 20 (thanks LTS Ubuntu)

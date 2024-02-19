@@ -51,6 +51,7 @@ See below how to install and update.
 
 - NodeJS (20.x)
 - npm (9.6.4)
+- fastetch (optional)
 - ripgrep
 - curl
 - libfuse2
