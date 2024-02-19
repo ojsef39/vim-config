@@ -77,8 +77,8 @@ else
 		make_PRERELEASE=$(grep "NVIM_VERSION_PRERELEASE" $FILE_PATH | cut -d ' ' -f 2)
 		make_VERSION="v${MAJOR}.${MINOR}.${PATCH}${PRERELEASE}"
 
-		echo $make_VERSION
-		echo $nvim_version
+		echo "make version: $make_VERSION"
+		echo "nvim_version: $nvim_version"
 		exit 1 ## Testing
 
 		if [ "$nvim_version" != "$make_VERSION" ]; then
