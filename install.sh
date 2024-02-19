@@ -76,11 +76,7 @@ else
 		make_MINOR=$(grep "NVIM_VERSION_MINOR" CMakeLists.txt | cut -d ' ' -f 2 | tr -d ')')
 		make_PATCH=$(grep "NVIM_VERSION_PATCH" CMakeLists.txt | cut -d ' ' -f 2 | tr -d ')')
 		make_PRERELEASE=$(grep "NVIM_VERSION_PRERELEASE" CMakeLists.txt | cut -d ' ' -f 2 | tr -d '"' | tr -d ')')
-		make_VERSION="v${make_MAJOR}.${make_MINOR}.${make_PATCH}${make_PRERELEASE}"
-
-		echo "make version: $make_VERSION"
-		echo "nvim_version: $nvim_version"
-		exit 1 ## Testing
+		make_VERSION="${make_MAJOR}.${make_MINOR}.${make_PATCH}${make_PRERELEASE}"
 
 		if [ "$nvim_version" != "$make_VERSION" ]; then
 			make CMAKE_BUILD_TYPE=Release
