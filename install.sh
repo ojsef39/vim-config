@@ -4,6 +4,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	IS_MAC=true
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	IS_MAC=false
+	if [[ "$DISTRO" == "ubuntu" ]]; then
+		LINUX_DIST="ubuntu"
+	fi
 else
 	echo "Unsupported OS, cannot continue (See ReadMe.md)"
 	exit 1
@@ -96,11 +99,24 @@ done
 echo "Files moved to ~/.config/nvim/"
 
 # Ask if user wants to install fastfetch
+read -p "Do you want to install fastfetch? (Y/n)" yn
 if [ "$IS_MAC" = true ]; then
-	read -p "Do you want to install fastfetch? Mac only for now (Y/n)" yn
 	case $yn in
 	[Yy]* | "") brew install fastfetch ;;
 	*) echo "You can install fastfetch by typing 'brew install fastfetch' in the terminal. Not installed…" ;;
+	esac
+elif [ "$LINUX_DIST" == "ubuntu" ]; then
+	case $yn in
+	[Yy]* | "")
+		if uname -m | grep -q "x86_64"; then
+			wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.3/fastfetch-linux-x86_64.deb
+			dpkg -i fastfetch-linux-x86_64.deb
+		elif uname -m | grep -q "arm64"; then
+			wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.3/fastfetch-linux-aarch64.deb
+			dpkg -i fastfetch-linux-aarch64.deb
+		fi
+		;;
+	*) echo "See https://github.com/fastfetch-cli/fastfetch/ on how to install. Not installed…" ;;
 	esac
 fi
 
