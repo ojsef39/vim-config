@@ -72,11 +72,11 @@ else
 
 		# Extract version from CMakelist
 		cd neovim
-		make_MAJOR=$(grep "NVIM_VERSION_MAJOR" CMakeLists.txt | cut -d ' ' -f 2)
-		make_MINOR=$(grep "NVIM_VERSION_MINOR" CMakeLists.txt | cut -d ' ' -f 2)
-		make_PATCH=$(grep "NVIM_VERSION_PATCH" CMakeLists.txt | cut -d ' ' -f 2)
-		make_PRERELEASE=$(grep "NVIM_VERSION_PRERELEASE" CMakeLists.txt | cut -d ' ' -f 2)
-		make_VERSION="v${MAJOR}.${MINOR}.${PATCH}${PRERELEASE}"
+		make_MAJOR=$(grep "NVIM_VERSION_MAJOR" CMakeLists.txt | cut -d ' ' -f 2 | tr -d ')')
+		make_MINOR=$(grep "NVIM_VERSION_MINOR" CMakeLists.txt | cut -d ' ' -f 2 | tr -d ')')
+		make_PATCH=$(grep "NVIM_VERSION_PATCH" CMakeLists.txt | cut -d ' ' -f 2 | tr -d ')')
+		make_PRERELEASE=$(grep "NVIM_VERSION_PRERELEASE" CMakeLists.txt | cut -d ' ' -f 2 | tr -d '"' | tr -d ')')
+		make_VERSION="v${make_MAJOR}.${make_MINOR}.${make_PATCH}${make_PRERELEASE}"
 
 		echo "make version: $make_VERSION"
 		echo "nvim_version: $nvim_version"
