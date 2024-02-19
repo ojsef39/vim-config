@@ -66,6 +66,7 @@ else
 			exit 1
 		fi
 		git clone https://github.com/neovim/neovim.git
+		git switch nightly
 		# Check if version is the same before installing
 		nvim_version=$(nvim -v | head -n 1 | awk '{print $2}')
 		nvim_version=${nvim_version#v} # Remove leading 'v' if present
