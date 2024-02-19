@@ -94,7 +94,7 @@ else
 	sudo bash nodesource_setup.sh
 	rm nodesource_setup.sh
 	sudo apt install -y nodejs
-	npm install -g npm@9.6.4
+	sudo npm install -g npm@9.6.4
 
 	# Append to .bashrc, check before if the path is already there
 	if ! grep -q '/opt/nvim/' ~/.bashrc; then
@@ -135,10 +135,10 @@ elif [ "$LINUX_DIST" == "ubuntu" ]; then
 	[Yy]* | "")
 		if uname -m | grep -q "x86_64"; then
 			wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.3/fastfetch-linux-x86_64.deb
-			dpkg -i fastfetch-linux-x86_64.deb
+			sudo dpkg -i fastfetch-linux-x86_64.deb
 		elif uname -m | grep -q "aarch64"; then
 			wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.3/fastfetch-linux-aarch64.deb
-			dpkg -i fastfetch-linux-aarch64.deb
+			sudo dpkg -i fastfetch-linux-aarch64.deb
 		fi
 		if [ -f ~/.bashrc ]; then
 			if ! grep -q 'fastfetch' ~/.bashrc; then
