@@ -29,6 +29,7 @@ if [ "$IS_MAC" = true ]; then
 			echo "alias vim=nvim" >>~/.zshrc
 		fi
 	fi
+	# No elif because user could have both
 	if [ -f ~/.bashrc ]; then
 		if ! grep -q 'alias vim=nvim' ~/.bashrc; then
 			# Append to .bashrc
@@ -102,7 +103,15 @@ echo "Files moved to ~/.config/nvim/"
 read -p "Do you want to install fastfetch? (Y/n)" yn
 if [ "$IS_MAC" = true ]; then
 	case $yn in
-	[Yy]* | "") brew install fastfetch ;;
+	[Yy]* | "")
+		brew install fastfetch
+		if [ -f ~/.zshrc ]; then
+			if ! grep -q 'fastfetch' ~/.zshrc; then
+				#Append to .zshrc
+				echo "fastfetch" >>~/.zshrc
+			fi
+		fi
+		;;
 	*) echo "You can install fastfetch by typing 'brew install fastfetch' in the terminal. Not installed…" ;;
 	esac
 elif [ "$LINUX_DIST" == "ubuntu" ]; then
@@ -114,6 +123,12 @@ elif [ "$LINUX_DIST" == "ubuntu" ]; then
 		elif uname -m | grep -q "arm64"; then
 			wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.3/fastfetch-linux-aarch64.deb
 			dpkg -i fastfetch-linux-aarch64.deb
+		fi
+		if [ -f ~/.bashrc ]; then
+			if ! grep -q 'fastfetch' ~/.bashrc; then
+				# Append to .bashrc
+				echo "fastfetch" >>~/.bashrc
+			fi
 		fi
 		;;
 	*) echo "See https://github.com/fastfetch-cli/fastfetch/ on how to install. Not installed…" ;;
