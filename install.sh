@@ -70,11 +70,18 @@ else
 		nvim_version=$(nvim -v | head -n 1 | awk '{print $2}')
 		nvim_version=${nvim_version#v} # Remove leading 'v' if present
 
-		# Extract version from git describe
-		git_version=$(git describe --first-parent --dirty --always)
-		git_version=${git_version%%-*} # Remove everything after (and including) the first '-'
+		# Extract version from CMakelist
+		make_MAJOR=$(grep "NVIM_VERSION_MAJOR" $FILE_PATH | cut -d ' ' -f 2)
+		make_MINOR=$(grep "NVIM_VERSION_MINOR" $FILE_PATH | cut -d ' ' -f 2)
+		make_PATCH=$(grep "NVIM_VERSION_PATCH" $FILE_PATH | cut -d ' ' -f 2)
+		make_PRERELEASE=$(grep "NVIM_VERSION_PRERELEASE" $FILE_PATH | cut -d ' ' -f 2)
+		make_VERSION="v${MAJOR}.${MINOR}.${PATCH}${PRERELEASE}"
 
-		if [ "$nvim_version" != "$git_version" ]; then
+		echo $make_VERSION
+		echo $nvim_version
+		exit 1 ## Testing
+
+		if [ "$nvim_version" != "$make_VERSION" ]; then
 			cd neovim
 			make CMAKE_BUILD_TYPE=Release
 			sudo make install
