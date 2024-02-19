@@ -67,10 +67,11 @@ else
 		fi
 		git clone https://github.com/neovim/neovim.git
 		# Check if version is the same before installing
-		nvim_version=$(nvim -v | head -n 1 | awk '{print $2}')
+		nvim_version=$(nvim -v | head -n 1 | awk '{print $2}' | sed 's/\(-dev\).*/\1/')
 		nvim_version=${nvim_version#v} # Remove leading 'v' if present
 
 		# Extract version from CMakelist
+		cd neovim
 		make_MAJOR=$(grep "NVIM_VERSION_MAJOR" CMakeLists.txt | cut -d ' ' -f 2)
 		make_MINOR=$(grep "NVIM_VERSION_MINOR" CMakeLists.txt | cut -d ' ' -f 2)
 		make_PATCH=$(grep "NVIM_VERSION_PATCH" CMakeLists.txt | cut -d ' ' -f 2)
@@ -82,7 +83,6 @@ else
 		exit 1 ## Testing
 
 		if [ "$nvim_version" != "$make_VERSION" ]; then
-			cd neovim
 			make CMAKE_BUILD_TYPE=Release
 			sudo make install
 			cd .. && rm -rf neovim
