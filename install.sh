@@ -120,7 +120,7 @@ elif [ "$LINUX_DIST" == "ubuntu" ]; then
 		if uname -m | grep -q "x86_64"; then
 			wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.3/fastfetch-linux-x86_64.deb
 			dpkg -i fastfetch-linux-x86_64.deb
-		elif uname -m | grep -q "arm64"; then
+		elif uname -m | grep -q "aarch64"; then
 			wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.3/fastfetch-linux-aarch64.deb
 			dpkg -i fastfetch-linux-aarch64.deb
 		fi
