@@ -71,10 +71,10 @@ else
 		nvim_version=${nvim_version#v} # Remove leading 'v' if present
 
 		# Extract version from CMakelist
-		make_MAJOR=$(grep "NVIM_VERSION_MAJOR" $FILE_PATH | cut -d ' ' -f 2)
-		make_MINOR=$(grep "NVIM_VERSION_MINOR" $FILE_PATH | cut -d ' ' -f 2)
-		make_PATCH=$(grep "NVIM_VERSION_PATCH" $FILE_PATH | cut -d ' ' -f 2)
-		make_PRERELEASE=$(grep "NVIM_VERSION_PRERELEASE" $FILE_PATH | cut -d ' ' -f 2)
+		make_MAJOR=$(grep "NVIM_VERSION_MAJOR" CMakeLists.txt | cut -d ' ' -f 2)
+		make_MINOR=$(grep "NVIM_VERSION_MINOR" CMakeLists.txt | cut -d ' ' -f 2)
+		make_PATCH=$(grep "NVIM_VERSION_PATCH" CMakeLists.txt | cut -d ' ' -f 2)
+		make_PRERELEASE=$(grep "NVIM_VERSION_PRERELEASE" CMakeLists.txt | cut -d ' ' -f 2)
 		make_VERSION="v${MAJOR}.${MINOR}.${PATCH}${PRERELEASE}"
 
 		echo "make version: $make_VERSION"
