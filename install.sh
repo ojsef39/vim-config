@@ -40,7 +40,7 @@ else
 	# Check if using apt
 	if command -v apt >/dev/null || which apt >/dev/null; then
 		sudo apt update
-		sudo apt install -y curl libfuse2 ripgrep python3 golang unzip npm
+		sudo apt install -y curl libfuse2 ripgrep python3 python3-neovim golang unzip npm
 	else
 		echo "Sorry, this script only supports apt for now"
 		exit 1
@@ -66,7 +66,6 @@ else
 			exit 1
 		fi
 		git clone https://github.com/neovim/neovim.git
-		git switch nightly
 		# Check if version is the same before installing
 		nvim_version=$(nvim -v | head -n 1 | awk '{print $2}')
 		nvim_version=${nvim_version#v} # Remove leading 'v' if present
@@ -77,7 +76,7 @@ else
 
 		if [ "$nvim_version" != "$git_version" ]; then
 			cd neovim
-			make CMAKE_BUILD_TYPE=RelWithDebInfo
+			make CMAKE_BUILD_TYPE=Release
 			sudo make install
 			cd .. && rm -rf neovim
 		else
