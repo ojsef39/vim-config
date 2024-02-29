@@ -29,6 +29,7 @@ return {
           vim.fn.setreg("+", path, "c")
         end,
       },
+      width = 30,
     },
     default_component_configs = {
       indent = {
