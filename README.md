@@ -10,8 +10,8 @@ See below how to install and update.
 ## Requrements
 
 - apt or brew
-- MacOS (Tested on ARM, should work on x86 too)
-- Linux (Tested on x86 & ARM - Note: ARM version could be buggy)
+- MacOS (Tested on ARM, should work on x86_64 too)
+- Linux (Tested on x86_64 & ARM - Note: ARM version could be buggy)
 
 ## Dependencies (if needed, will be installed by script)
 
