@@ -14,6 +14,9 @@ See below how to install and update.
 - Linux (Tested on x86_64 & ARM - Note: ARM version could be buggy)
 
 ## Dependencies (if needed, will be installed by script)
+<details open><summary>Neovim plugins:</summary>
+
+  - Adding details soon…
 
 <details open><summary>MacOS:</summary>
 
